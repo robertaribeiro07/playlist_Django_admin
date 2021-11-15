@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+Curso
+
+{% endblock%}
+
+{% block 'body' %}
+
+
+<div class="container">
+  <br>
+  <h1>Músicas</h1>
+  <div class="row">
+  <style> audio::-webkit-media-controls-panel{ background-color: #f09fc5;}</style>
+   
+     
+
+      {% for i in musicas %}
+      
+
+          <div style="margin-top: 30px; " class="col-md">
+              <div class="card" style="width: 20rem">  
+               <br>
+
+               <center> <audio controls >
+                  <source src="{{i.musica.url}}"   type="audio/ogg">
+                  <source src="{{i.musica.url}}"  type="audio/mp3">
+                  Your browser does not support the audio tag.
+                </audio> </center>
+               <!-- <video  controls>
+                  <source src="{{i.aula.url}}" type="video/mp4">
+                  <source src="{{i.aula.url}}" type="audio/mp3">
+
+                  Your browser does not support the video tag.
+                </video>-->
+                  <div class="card-body">
+                    <h6 class="card-title">{{i.nome}} - {{i.descricao}}</h6> 
+                    <a href="{% url 'musica' i.id %}" class="btn btn-primary " style="background-color:#f3569f">Comentar</a>
+                  </div>
+                </div>
+          </div>
+        
+      {% endfor %}
+  
+  </div>
+
+</div>
+{% endblock %}
